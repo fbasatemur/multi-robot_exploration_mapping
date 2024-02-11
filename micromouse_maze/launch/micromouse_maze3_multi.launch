@@ -1,0 +1,99 @@
+<launch>
+  <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
+  
+  <arg name="first_tb3"  default="tb3_0"/>
+  <arg name="second_tb3" default="tb3_1"/>
+  <arg name="third_tb3"  default="tb3_2"/>
+  <arg name="forth_tb3"  default="tb3_3"/>
+  
+  <arg name="tb0_x_pos" default="1.0"/>
+  <arg name="tb0_y_pos" default="0.0"/>
+  <arg name="tb0_z_pos" default="0.05"/>
+  <arg name="tb0_yaw" default="0.0"/>
+  
+  <arg name="tb1_x_pos" default="0.0"/>
+  <arg name="tb1_y_pos" default="1.0"/>
+  <arg name="tb1_z_pos" default="0.05"/>
+  <arg name="tb1_yaw" default="0.0"/>
+  
+  <arg name="tb2_x_pos" default="-1.0"/>
+  <arg name="tb2_y_pos" default="0.0"/>
+  <arg name="tb2_z_pos" default="0.05"/>
+  <arg name="tb2_yaw" default="0.0"/>
+  
+  <arg name="tb3_x_pos" default="0.0"/>
+  <arg name="tb3_y_pos" default="-1.0"/>
+  <arg name="tb3_z_pos" default="0.05"/>
+  <arg name="tb3_yaw" default="0.0"/>
+  
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find micromouse_maze)/worlds/maze3.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+  
+<group ns = "$(arg first_tb3)">
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro botname:=$(arg first_tb3)" />
+    
+
+  <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model $(arg first_tb3) -x $(arg tb0_x_pos) -y $(arg tb0_y_pos) -z $(arg tb0_z_pos) -Y $(arg tb0_yaw) -param robot_description" />
+  
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
+    <param name="publish_frequency" type="double" value="50.0" />
+    <param name="tf_prefix" value="$(arg first_tb3)" />
+  </node>
+  
+</group>
+
+
+<group ns = "$(arg second_tb3)">
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro botname:=$(arg second_tb3)" />
+    
+
+  <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model $(arg second_tb3) -x $(arg tb1_x_pos) -y $(arg tb1_y_pos) -z $(arg tb1_z_pos) -Y $(arg tb1_yaw) -param robot_description" />
+  
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
+    <param name="publish_frequency" type="double" value="50.0" />
+    <param name="tf_prefix" value="$(arg second_tb3)" />
+  </node>
+  
+</group>
+
+<group ns = "$(arg third_tb3)">
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro botname:=$(arg third_tb3)" />
+    
+
+  <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model $(arg third_tb3) -x $(arg tb2_x_pos) -y $(arg tb2_y_pos) -z $(arg tb2_z_pos) -Y $(arg tb2_yaw) -param robot_description" />
+  
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
+    <param name="publish_frequency" type="double" value="50.0" />
+    <param name="tf_prefix" value="$(arg third_tb3)" />
+  </node>
+  
+</group>
+
+<group ns = "$(arg forth_tb3)">
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro botname:=$(arg forth_tb3)" />
+    
+
+  <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model $(arg forth_tb3) -x $(arg tb3_x_pos) -y $(arg tb3_y_pos) -z $(arg tb3_z_pos) -Y $(arg tb3_yaw) -param robot_description" />
+  
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
+    <param name="publish_frequency" type="double" value="50.0" />
+    <param name="tf_prefix" value="$(arg forth_tb3)" />
+  </node>
+  
+</group>
+  
+  
+  <!--node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
+    <param name="publish_frequency" type="double" value="50.0" />
+  </node-->
+  
+ <!-- <node type="rviz" name="rviz" pkg="rviz" args="-d $(find micromouse_maze)/rviz/micromouse.rviz" /> -->
+    
+    
+</launch>

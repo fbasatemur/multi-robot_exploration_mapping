@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="maze2">
+    <static>true</static>
+    <pose>0 0 0 0 0 0</pose>
+    <link name="walls">
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://maze2/meshes/maze2.dae</uri>
+            <scale>0.5 0.5 0.5</scale>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://maze2/meshes/maze2.dae</uri>
+            <scale>0.5 0.5 0.5</scale>
+          </mesh>
+        </geometry>
+        <cast_shadows>false</cast_shadows>
+      </visual>
+    </link>
+  </model>
+</sdf>

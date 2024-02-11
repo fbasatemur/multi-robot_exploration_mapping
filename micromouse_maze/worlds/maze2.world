@@ -1,0 +1,27 @@
+<sdf version="1.4">
+  <world name="default">
+
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>true</shadows>
+    </scene>
+
+    <!-- A global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- A ground plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <!-- A ground plane -->
+    <include>
+      <uri>model://maze2</uri>
+    </include>
+
+  </world>
+
+</sdf>
