@@ -1,4 +1,4 @@
-# multirobot_exploration_mapping
+# multi-robot_exploration_mapping
 
 ## Project Description
 
@@ -14,20 +14,20 @@ The required node connections following the adjustments are provided in the foll
 
 ### TF Tree Graph
 
-![tf_tree](https://github.com/fbasatemur/multirobot_exploration_mapping/blob/main/docs/tf_tree_last.png?ref_type=heads)
+![tf_tree](https://github.com/fbasatemur/multi-robot_exploration_mapping/blob/main/docs/tf_tree_last.png?ref_type=heads)
 
-### The initialization of multirobot_exploration_mapping:
+### The initialization of multi-robot_exploration_mapping:
 
 ```bash
 $ sudo apt-get install ros-noetic-multirobot-map-merge
 $ mkdir -p  ~/multi_tb3_fe/src
 $ cd ~/multi_tb3_fe/src
-$ git clone https://github.com/fbasatemur/multirobot_exploration_mapping.git
+$ git clone https://github.com/fbasatemur/multi-robot_exploration_mapping.git
 $ git clone https://github.com/ROBOTIS-GIT/turtlebot3.git
 $ git clone https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
-$ mv multirobot_exploration_mapping*/micromouse_maze .
-$ mv multirobot_exploration_mapping*/multirobot_exploration_mapping .
-$ rm -r multirobot_exploration_mapping*
+$ mv multi-robot_exploration_mapping*/micromouse_maze .
+$ mv multi-robot_exploration_mapping*/multirobot_exploration_mapping .
+$ rm -r multi-robot_exploration_mapping*
 $ cd ~/multi_tb3_fe/
 $ rosdep install --from-paths src --ignore-src --rosdistro noetic -y
 $ catkin_make
@@ -35,6 +35,17 @@ $ source ~/.bashrc
 ```
 
 ### Starting the simulation environment:
+
+Four Turtlebot3 robots will be operated, utilizing the burger model due to the absence of the camera-depth sensor. Therefore, the TURTLEBOT3_MODEL variable in the ./bashrc file should be assigned an appropriate value.
+
+```bash
+gedit ~/.bashrc
+```
+```bash
+export TURTLEBOT3_MODEL=burger
+```
+
+Starting the simulation environment:
 
 ```
 $ roslaunch micromouse_maze micromouse_maze3_multi.launch
@@ -85,12 +96,12 @@ These steps describe the process followed by each Turtlebot3 for frontier explor
 
 Since the FE planning for robots is done using threads, there is a race condition in the terminal outputs. Therefore, each robot's output is labeled with "[tb3_*]" to accurately observe the status information of each robot. 
 
-![console](https://github.com/fbasatemur/multirobot_exploration_mapping/blob/main/docs/multi_tb3_console.png?ref_type=heads)
+<img src="https://github.com/fbasatemur/multi-robot_exploration_mapping/blob/main/docs/multi_tb3_console.png?ref_type=heads" width="400" height="527"/>
 
 ### rviz results
 
 The initial state and the progress in subsequent stages:
 
-![mrfe1](https://github.com/fbasatemur/multirobot_exploration_mapping/blob/main/docs/multi_tb3_fe_c1.png?ref_type=heads)
+![mrfe1](https://github.com/fbasatemur/multi-robot_exploration_mapping/blob/main/docs/multi_tb3_fe_c1.png?ref_type=heads)
 
-![mrfe2](https://github.com/fbasatemur/multirobot_exploration_mapping/blob/main/docs/multi_tb3_fe_c2.png?ref_type=heads)
+![mrfe2](https://github.com/fbasatemur/multi-robot_exploration_mapping/blob/main/docs/multi_tb3_fe_c2.png?ref_type=heads)
