@@ -113,28 +113,3 @@ $ rostopic list
 /tf_static
 ```
 
-# What is missing
-
-- Create a new roscpp package namely solve_maze with required dependencies. 
-
-- Create a new node source namely solver.cpp in solve_maze package.
-
-- In solver.cpp subscribe to  /odom and /scan messages and publish /cmd_vel.
-
-- In solver.cpp develop the algorithms to solve the maze and reach the target square with center located at x=0 and y=0 coordinates and each side of 2m as soon as possible. 
-
-- Make required additions in the CMakeLists.txt file in order to be able to compile your node. Name your node as my_solver.
-
-- Test your code in both micromouse_maze1.launch and micromouse_maze2.launch using
-```
-rosrun solve_maze my_solver
-```
-
-- Prepare a README.md file in your package that includes compilation steps and run steps for your code. Also include a report on maze complition times with your code as descriptive as possible.
-
-- Create an empty repo at the following address and push your code
-```
-https://gitlab.com/blm6191_2023_1/members/<user>
-```
-
-Note that each time you run micromouse_maze1.launch or micromouse_maze2.launch turtlebot3 starts at a random corner of the maze.
