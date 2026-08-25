@@ -1,0 +1,21 @@
+<launch>
+  <include file="$(find turtlebot3_navigation)/launch/move_base.launch" ns="tb3_0">
+    <arg name="cmd_vel_topic" value="/tb3_0/cmd_vel" />
+    <arg name="odom_topic" value="/tb3_0/odom" />
+  </include>
+
+  <include file="$(find turtlebot3_navigation)/launch/move_base.launch" ns="tb3_1">
+    <arg name="cmd_vel_topic" value="/tb3_1/cmd_vel" />
+    <arg name="odom_topic" value="/tb3_1/odom" />
+  </include>
+
+  <include file="$(find turtlebot3_navigation)/launch/move_base.launch" ns="tb3_2">
+    <arg name="cmd_vel_topic" value="/tb3_2/cmd_vel" />
+    <arg name="odom_topic" value="/tb3_2/odom" />
+  </include>
+
+  <include file="$(find turtlebot3_navigation)/launch/move_base.launch" ns="tb3_3">
+    <arg name="cmd_vel_topic" value="/tb3_3/cmd_vel" />
+    <arg name="odom_topic" value="/tb3_3/odom" />
+  </include>
+</launch>
