@@ -51,7 +51,7 @@ Starting the simulation environment:
 $ roslaunch micromouse_maze micromouse_maze3_multi.launch
 $ roslaunch turtlebot3_gazebo multi_map_merge.launch
 $ roslaunch turtlebot3_gazebo multi_turtlebot3_slam.launch
-$ roslaunch turtlebot3_navigation multi_move_base.launch
+$ roslaunch multirobot_exploration_mapping multi_move_base.launch
 $ roslaunch micromouse_maze multi_robot_rviz.launch
 ```
 
